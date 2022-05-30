@@ -125,3 +125,6 @@ nb-configuration.xml
 /phpunit*.xml
 /.phpunit.*.cache
 
+
+# Composer Lock dinonaktifkan saja
+composer.lock
