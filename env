@@ -131,3 +131,11 @@
 #--------------------------------------------------------------------
 
 # curlrequest.shareOptions = true
+
+
+# Database Doctrine
+PPDB_DB_TYPE = SQLITE
+PPDB_DB_PATH = writable/database/db.sqlite
+# PPDB_DB_USER
+# PPDB_DB_PASSWORD
+# PPDB_DB_NAME

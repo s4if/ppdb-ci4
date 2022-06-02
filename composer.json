@@ -1,12 +1,17 @@
 {
-    "name": "codeigniter4/appstarter",
+    "name": "s4if/ppdb-ci4",
     "type": "project",
-    "description": "CodeIgniter4 starter app",
-    "homepage": "https://codeigniter.com",
+    "description": "Rewrite Program PPDB dengan CI4",
+    "homepage": "https://www.saifulh.web.id",
     "license": "MIT",
     "require": {
         "php": "^7.3 || ^8.0",
-        "codeigniter4/framework": "^4"
+        "codeigniter4/framework": "^4",
+        "doctrine/orm": "^2.12",
+        "gregwar/captcha": "^1.1",
+        "mikehaertl/phpwkhtmltopdf": "^2.5",
+        "phpoffice/phpspreadsheet": "^1.23",
+        "vlucas/phpdotenv": "^5.4"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9",
@@ -32,10 +37,5 @@
     },
     "scripts": {
         "test": "phpunit"
-    },
-    "support": {
-        "forum": "http://forum.codeigniter.com/",
-        "source": "https://github.com/codeigniter4/CodeIgniter4",
-        "slack": "https://codeigniterchat.slack.com"
     }
 }
