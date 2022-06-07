@@ -65,6 +65,9 @@ writable/debugbar/*
 writable/database/*
 !writable/database/index.html
 
+/app/Models/Proxies/*
+!/app/Models/Proxies/index.html
+
 php_errors.log
 
 #-------------------------
