@@ -134,3 +134,4 @@ nb-configuration.xml
 
 # Composer Lock dinonaktifkan saja
 composer.lock
+site_config.json
