@@ -1,0 +1,27 @@
+{
+	"sekolah": "SMAN 1 Kota Nagisawa Barat",
+	"tahun_ajaran": "2023/2024",
+	"gelombang": "1",
+	"tgl_buka": "14-1-2023",
+	"tgl_tutup": "15-3-2023",
+	"tgl_ujian": "18-3-2023",
+	"tgl_pengumuman": "25-3-2023",
+	"contact_person": {
+		"nuri": "08800033323",
+		"ismail": "087364664773"
+	},
+	"jurusan": {
+		"IPA": {
+			"singkatan":"IPA",
+			"deskripsi": "Ilmu Pengetahuan Alam"
+		},
+		"IPS": {
+			"singkatan":"IPS",
+			"deskripsi": "Ilmu Pengetahuan Alam"
+		},
+		"BHS": {
+			"singkatan":"BHS",
+			"deskripsi": "Bahasa"
+		}
+	}
+}

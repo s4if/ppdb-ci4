@@ -29,4 +29,29 @@ class Services extends BaseService
      *     return new \CodeIgniter\Example();
      * }
      */
+
+    //DOCTRINE SERVICE CLASS
+    public static function doctrine($getShared = true){
+        if ($getShared)
+        {
+            return static::getSharedInstance('doctrine');
+        }
+        // INITIATE
+        $doctrine = new \App\Libraries\Doctrine;
+        // SHORTCUT ENTITY MANAGER
+        $em = $doctrine->em;
+        // RETURN ENTITY MANAGER
+        return $em;
+    }
+
+    //SITE_CONFIG SERVICE CLASS
+    public static function site_config($getShared = true){
+        if ($getShared)
+        {
+            return static::getSharedInstance('site_config');
+        }
+        $site_config = new \App\Libraries\SiteConfig;
+        $config = $site_config->config;
+        return $config;
+    }
 }

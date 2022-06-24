@@ -4,10 +4,8 @@ namespace App\Libraries;
 
 include_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 
-use Doctrine\Common\ClassLoader;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
-use Doctrine\ORM\Mapping\Driver\YamlDriver;
 
 class Doctrine
 {
