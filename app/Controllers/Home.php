@@ -7,7 +7,7 @@ class Home extends BaseController
     public function index()
     {
         echo 'user:' . $_SESSION['username'];
-        echo '<br><a href="'.base_url().'"/auth/logout">Logount</a>';
+        echo '<br><a href="'.base_url().'/auth/logout">Logout</a>';
     }
 
     public function welcome()

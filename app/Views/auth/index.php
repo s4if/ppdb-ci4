@@ -10,7 +10,13 @@
 	<label>Username: </label><input type="text" name="username"><br>
 	<label>Password: </label><input type="password" name="password"><br>
 	<input type="submit" value="Login"> &nbsp; <a href="<?=base_url()?>/auth/register">Register</a><br>
-	<p><?=$error?></p>
+	<p><?php
+		if (is_array($notif)) {
+			foreach ($notif as $item){
+				echo $item['type']." |==| ".$item['message'];
+			}
+		}
+	?></p>
 </form>
 </body>
 </html>

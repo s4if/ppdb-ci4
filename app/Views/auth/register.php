@@ -29,7 +29,13 @@
 		</select>
 	<br>
 	<input type="submit" value="Register"> &nbsp; <a href="<?=base_url()?>/auth/index">Login</a><br>
-	<p><?=$error?></p>
+	<p><?php
+		if (is_array($notif)) {
+			foreach ($notif as $item){
+				echo $item['type']." |==| ".$item['message'];
+			}
+		}
+	?></p>
 </form>
 </body>
 </html>

@@ -13,15 +13,10 @@ class Auth extends BaseController
         $this->em = \Config\Services::doctrine();
     }
 
-    public function coba()
-    {
-        print_r($this->em);
-    }
-
     public function index()
     {
         return view('auth/index', [
-            'error' => $this->session->getFlashData('error'),
+            'notif' => $this->session->getFlashData('notif'),
         ]);
     }
     
@@ -32,7 +27,10 @@ class Auth extends BaseController
         $registrant = $this->em->getRepository('\\Entities\\Registrant')
             ->findOneBy(array('username' => $username));
         if (is_null($registrant)) {
-            $this->session->setFlashdata('error', 'Maaf, username salah!');
+            $this->session->setFlashdata('notif', [[
+                'type' => 'error',
+                'message' => 'Maaf, username salah!'
+            ]]);
             return redirect()->to('/login');
         } else {
             if (password_verify($password, $registrant->getPassword())) {
@@ -42,9 +40,16 @@ class Auth extends BaseController
                     'logged_in' => True
                 ];
                 $this->session->set($data);
+                $this->session->setFlashdata('notif', [[
+                    'type' => 'success',
+                    'message' => 'Selamat, anda berhasil login!'
+                ]]);
                 return redirect()->to('/home');
             } else {
-                $this->session->setFlashdata('error', 'Maaf, password salah!');
+                $this->session->setFlashdata('notif', [[
+                    'type' => 'error',
+                    'message' => 'Maaf, password salah!'
+                ]]);
                 return redirect()->to('/login');
             }
         }
@@ -54,8 +59,39 @@ class Auth extends BaseController
     {
         return view('auth/register', [
             'jurusan' => (array) $this->site_config->jurusan,
-            'error' => $this->session->getFlashData('error'),
+            'notif' => $this->session->getFlashData('notif'),
         ]);
+    }
+
+    public function register_process()
+    {
+        $reg = new \Entities\Registrant;
+        $reg->setUsername($this->request->getPost("username"));
+        $reg->setPassword(password_hash($this->request->getPost("password"), PASSWORD_DEFAULT));
+        $reg->setName($this->request->getPost("name"));
+        $reg->setGender($this->request->getPost("gender"));
+        $reg->setPrevSchool($this->request->getPost("prev_school"));
+        $reg->setNisn($this->request->getPost("nisn"));
+        $reg->setContact($this->request->getPost("contact"));
+        $reg->setProgram($this->request->getPost("program"));
+        $reg->setRegTime((new \DateTime('now')));
+        $reg->setIsFinalized(False);
+        $reg->setIsDeleted(False);
+        try {
+            $this->em->persist($reg);
+            $this->em->flush();
+        } catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException $e) {
+            $this->session->setFlashdata('notif', [[
+                    'type' => 'error',
+                    'message' => 'Maaf, Username Sudah Digunakan!'
+                ]]);
+            return redirect()->to('/register');
+        }
+        $this->session->setFlashdata('notif', [[
+            'type' => 'success',
+            'message' => 'Registrasi Berhasil'
+        ]]);
+        return redirect()->to('/login');
     }
 
     public function logout()
