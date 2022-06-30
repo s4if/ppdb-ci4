@@ -6,7 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3 || ^8.0",
-        "codeigniter4/framework": "^4",
+        "codeigniter4/framework": "^4.2.0",
         "doctrine/orm": "^2.12",
         "gregwar/captcha": "^1.1",
         "mikehaertl/phpwkhtmltopdf": "^2.5",
@@ -31,6 +31,7 @@
             "Entities\\": "app/Models/Entities"
         },
         "exclude-from-classmap": [
+            "**/Database/Migrations/**",
             "**/Database/Migrations/**"
         ]
     },
