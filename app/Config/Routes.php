@@ -34,7 +34,12 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Auth::index');
 $routes->get('/login', 'Auth::index');
 $routes->get('/register', 'Auth::register');
-$routes->get('/home', 'Home::index');
+$routes->get('/logout', 'Auth::logout');
+$routes->get('/lihat/pendaftar', 'Lihat::index');
+
+$routes->group('pendaftar', ['filter' => 'logged_in'], static function($routes){
+    $routes->get('/', 'Pendaftar::index');
+});
 
 /*
  * --------------------------------------------------------------------

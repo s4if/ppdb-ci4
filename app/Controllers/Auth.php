@@ -8,11 +8,6 @@ use CodeIgniter\HTTP\RequestInterface;
 class Auth extends BaseController
 {
 
-    public function __construct()
-    {
-        $this->em = \Config\Services::doctrine();
-    }
-
     public function index()
     {
         return view('auth/index', [
@@ -44,7 +39,7 @@ class Auth extends BaseController
                     'type' => 'success',
                     'message' => 'Selamat, anda berhasil login!'
                 ]]);
-                return redirect()->to('/home');
+                return redirect()->to('/pendaftar');
             } else {
                 $this->session->setFlashdata('notif', [[
                     'type' => 'error',

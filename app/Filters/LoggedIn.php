@@ -12,7 +12,10 @@ class LoggedIn implements FilterInterface
         $session = \Config\Services::session();
         if (!isset($_SESSION['logged_in']))
         {
-            $session->setFlashdata('error', 'Maaf, anda harus login dulu!');
+            $session->setFlashdata('notif', [[
+                    'type' => 'error',
+                    'message' => 'Maaf, anda harus login dulu!'
+                ]]);
             return redirect()->to('/login');
         }
         // Do something here
