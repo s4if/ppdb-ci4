@@ -70,6 +70,7 @@ class Auth extends BaseController
         $reg->setContact($this->request->getPost("contact"));
         $reg->setProgram($this->request->getPost("program"));
         $reg->setRegTime((new \DateTime('now')));
+        $reg->setPhase($this->site_config->gelombang);
         $reg->setIsFinalized(False);
         $reg->setIsDeleted(False);
         try {

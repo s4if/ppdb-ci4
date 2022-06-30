@@ -51,7 +51,12 @@ class Registrant
     /**
      * @ORM\Column(type="string", length=15, nullable=FALSE)
      */
-    protected $program; // dari .env?
+    protected $program; // dari site_config.json
+
+    /**
+     * @ORM\Column(type="integer", nullable=FALSE)
+     */
+    protected $phase; // Gelombang, ambil dari site_config.json
 
     /**
      * @ORM\Column(type="datetime", nullable=FALSE)
@@ -67,6 +72,11 @@ class Registrant
      * @ORM\Column(type="boolean", nullable=TRUE)
      */
     protected $is_deleted;
+
+    /**
+     * @ORM\OneToOne(targetEntity="\Entities\RegistrantDetail", mappedBy="registrant", orphanRemoval=true, cascade={"persist"})
+     **/
+    protected $registrant_detail;
 
     public function __construct()
     {
@@ -297,6 +307,26 @@ class Registrant
     public function setIsDeleted($is_deleted)
     {
         $this->is_deleted = $is_deleted;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhase()
+    {
+        return $this->phase;
+    }
+
+    /**
+     * @param mixed $phase
+     *
+     * @return self
+     */
+    public function setPhase($phase)
+    {
+        $this->phase = $phase;
 
         return $this;
     }
