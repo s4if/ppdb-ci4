@@ -30,8 +30,7 @@ class Doctrine
         }
 
         $models_namespace = 'Entities';
-        $models_path = $basepath . 'app/Models';
-        $proxies_dir = $basepath . 'app/Models/Proxies';
+        $proxies_dir = $basepath . 'writable/proxies';
         $metadata_paths = array($basepath . 'app/Models/Entities');
 
         $dev_mode = ($_ENV['CI_ENVIRONMENT'] != 'production');
