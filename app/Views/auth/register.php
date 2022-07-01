@@ -6,7 +6,7 @@
 	<title></title>
 </head>
 <body>
-<form method="POST" action="<?=base_url();?>/auth/register_process">
+<form method="POST" action="<?=base_url('/register');?>">
 	<label>Username: </label><input type="text" name="username"><br>
 	<label>Password: </label><input type="password" name="password"><br>
 	<label>Nama: </label><input type="text" name="name"><br>
@@ -28,14 +28,14 @@
 			?>
 		</select>
 	<br>
-	<input type="submit" value="Register"> &nbsp; <a href="<?=base_url()?>/auth/index">Login</a><br>
-	<p><?php
-		if (is_array($notif)) {
-			foreach ($notif as $item){
-				echo $item['type']." |==| ".$item['message'];
-			}
-		}
-	?></p>
+	<input type="submit" value="Register"> &nbsp; <a href="<?=base_url('/login')?>">Login</a><br>
 </form>
+<p><?php
+	if (is_array($notif)) {
+		foreach ($notif as $item){
+			echo $item['type']." |==| ".$item['message'];
+		}
+	}
+?></p>
 </body>
 </html>

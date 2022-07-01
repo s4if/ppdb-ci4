@@ -15,7 +15,7 @@ class Auth extends BaseController
         ]);
     }
     
-    public function login_process()
+    public function proses_login()
     {
         $username = $this->request->getPost("username");
         $password = $this->request->getPost("password");
@@ -58,7 +58,7 @@ class Auth extends BaseController
         ]);
     }
 
-    public function register_process()
+    public function proses_register()
     {
         $reg = new \Entities\Registrant;
         $reg->setUsername($this->request->getPost("username"));

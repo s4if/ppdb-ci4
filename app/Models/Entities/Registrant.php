@@ -330,4 +330,24 @@ class Registrant
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRegistrantDetail()
+    {
+        return $this->registrant_detail;
+    }
+
+    /**
+     * @param mixed $registrant_detail
+     *
+     * @return self
+     */
+    public function setRegistrantDetail(\Entities\RegistrantDetail $registrant_detail)
+    {
+        $this->registrant_detail = $registrant_detail;
+
+        return $this;
+    }
 }

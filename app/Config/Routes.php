@@ -21,7 +21,7 @@ $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
-$routes->setAutoRoute(true);
+$routes->setAutoRoute(false);
 
 /*
  * --------------------------------------------------------------------
@@ -33,12 +33,21 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Auth::index');
 $routes->get('/login', 'Auth::index');
+$routes->post('/login', 'Auth::proses_login');
 $routes->get('/register', 'Auth::register');
+$routes->post('/register', 'Auth::proses_register');
 $routes->get('/logout', 'Auth::logout');
-$routes->get('/lihat/pendaftar', 'Lihat::index');
+$routes->group('lihat', static function($routes){
+    $routes->get('pendaftar', 'Lihat::index');
+    $routes->get('get_data', 'Lihat::get_data');
+    $routes->get('get_data/(:alpha)', 'Lihat::get_data/$1');
+});
 
 $routes->group('pendaftar', ['filter' => 'logged_in'], static function($routes){
     $routes->get('/', 'Pendaftar::index');
+    $routes->get('detail', 'Pendaftar::detail');
+    $routes->post('detail', 'Pendaftar::isi_detail');
+    $routes->get('coba1', 'Pendaftar::coba1');
 });
 
 /*

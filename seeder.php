@@ -13,6 +13,7 @@ $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 $doctrine = new App\Libraries\Doctrine;
+$site_config = (new App\Libraries\SiteConfig)->config;
 
 $em = $doctrine->em;
 
@@ -29,6 +30,7 @@ $reg->setProgram("Reguler");
 $reg->setRegTime((new \DateTime('now')));
 $reg->setIsFinalized(False);
 $reg->setIsDeleted(False);
+$reg->setPhase($site_config->gelombang);
 $em->persist($reg);
 $em->flush();
 echo "Entities 1 created\n";

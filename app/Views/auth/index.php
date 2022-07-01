@@ -6,10 +6,10 @@
 	<title></title>
 </head>
 <body>
-<form method="POST" action="<?=base_url();?>/auth/login_process">
+<form method="POST" action="<?=base_url('/login');?>">
 	<label>Username: </label><input type="text" name="username"><br>
 	<label>Password: </label><input type="password" name="password"><br>
-	<input type="submit" value="Login"> &nbsp; <a href="<?=base_url()?>/auth/register">Register</a><br>
+	<input type="submit" value="Login"> &nbsp; <a href="<?=base_url('/register')?>">Register</a><br>
 	<p><?php
 		if (is_array($notif)) {
 			foreach ($notif as $item){
