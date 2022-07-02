@@ -154,9 +154,9 @@ class RegistrantDetail
      */
     protected $achievements;
 
-    public function initArray()
+    public function getPropList()
     {
-        $this->property_list = [
+        return [
             //'id', // id jangan diambil pakai array
             //'registrant',
             'nik',
@@ -191,8 +191,7 @@ class RegistrantDetail
 
     public function get($prop)
     {
-        $this->initArray();
-        if (in_array($prop, $this->property_list)) {
+        if (in_array($prop, $this->getPropList())) {
             return $this->$prop;
         } else {
             throw new Exception("Properties Not Found in This Entities!");
@@ -200,8 +199,7 @@ class RegistrantDetail
     }
 
     public function set($prop, $value){ // return object
-        $this->initArray();
-        if (in_array($prop, $this->property_list)) {
+        if (in_array($prop, $this->getPropList())) {
             $this->prop = $value;
             return $this;
         } else {
@@ -210,13 +208,12 @@ class RegistrantDetail
     }
 
     public function getArray($keys = null){
-        $this->initArray();
         if (is_null($keys)) {
-            $keys = $this->property_list;
+            $keys = $this->getPropList();
         }
         $data = [];
         foreach($keys as $key){
-            if (in_array($key, $this->property_list)) {
+            if (in_array($key, $this->getPropList())) {
                 $data[$key] = $this->$key;
             } else {
                 throw new Exception("Properties Not Found in This Entities!");
@@ -226,9 +223,8 @@ class RegistrantDetail
     }
 
     public function setArray($arr_value){
-        $this->initArray();
         foreach ($arr_value as $key => $value) {
-            if (in_array($key, $this->property_list)) {
+            if (in_array($key, $this->getPropList())) {
                 $this->$key = $value;
             }
         }
