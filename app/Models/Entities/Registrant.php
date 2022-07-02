@@ -78,6 +78,24 @@ class Registrant
      **/
     protected $registrant_detail;
 
+    /**
+     * @ORM\OneToOne(targetEntity="\Entities\Guardian")
+     * @ORM\JoinColumn(name="father_id", referencedColumnName="id", nullable=TRUE, onDelete="CASCADE")
+     **/
+    protected $father;
+
+    /**
+     * @ORM\OneToOne(targetEntity="\Entities\Guardian")
+     * @ORM\JoinColumn(name="mother_id", referencedColumnName="id", nullable=TRUE, onDelete="CASCADE")
+     **/
+    protected $mother;
+
+    /**
+     * @ORM\OneToOne(targetEntity="\Entities\Guardian")
+     * @ORM\JoinColumn(name="guardian_id", referencedColumnName="id", nullable=TRUE, onDelete="CASCADE")
+     **/
+    protected $guardian;
+
     public function __construct()
     {
         // nothing...
