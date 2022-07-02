@@ -42,6 +42,8 @@ class Pendaftar extends BaseController
         $data['birth_date'] = \DateTime::createFromFormat('Y-m-d', $data['birth_date']);
         $data['hobbies'] = implode(';',$data['hobbies']);
         $data['achievements'] = implode(';',$data['achievements']);
+        $data['hospital_sheets'] = implode(';',$data['hospital_sheets']);
+        $data['physical_abnormalities'] = implode(';',$data['physical_abnormalities']);
         // end process data
 
         //var_dump($data);

@@ -33,4 +33,42 @@ $reg->setIsDeleted(False);
 $reg->setPhase($site_config->gelombang);
 $em->persist($reg);
 $em->flush();
-echo "Entities 1 created\n";
+echo "Registrant user1 created\n";
+
+$regDetail = new \Entities\RegistrantDetail;
+$detail = [
+	'nik' => 43824837,
+    'nkk' => 43824837,
+    'nak' => 43824837,
+    'birth_place' => "Magelang",
+    'birth_date'=> \DateTime::createFromFormat('Y-m-d', "2005-05-25"),
+    'child_order' => 1,
+    'siblings_count' => 2,
+    'street' => 'Kenajen',
+    'rt' => 1,
+    'rw' => 3,
+    'village' => 'Blondo',
+    'district' => 'Mungkid',
+    'city' => 'Kab. Magelang',
+    'province' => 'Jawa Tengah',
+    'country' => 'Indonesia',
+    'postal_code' => 56513,
+    'family_condition' => "lengkap",
+    'nationality' => "WNI",
+    'religion' => "Islam",
+    'hospital_sheets' => 'maag;typhus',
+    'physical_abnormalities' => 'Pernah Patah Tulang Kaki',
+    'height' => 178,
+    'weight' => 67,
+    'head_size' => 46,
+    'stay_with' => "kedua orang tua",
+    'hobbies' => 'Membaca;Menulis',
+    'achievements' => null,
+];
+$regDetail->setArray($detail);
+$regDetail->setRegistrant($reg);
+$reg->setRegistrantDetail($regDetail);
+$em->persist($regDetail);
+$em->persist($reg);
+$em->flush();
+echo "Registrant Data Created \n";
